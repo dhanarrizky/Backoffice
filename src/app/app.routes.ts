@@ -11,21 +11,21 @@ export const routes: Routes = [
         component:EmployeeListComponent,
         children:[
             {
-                path:'add-employees',
-                component:AddEmployeeComponent
-            },
-            {
                 path:'detail/:username',
                 component:EmployeeDetailComponent
             }
         ]
     },
     {
+        path:'add-employees',
+        component:AddEmployeeComponent
+    },
+    {
         path:'login',
         component:LoginComponent
     },
     {
-        path:'*',
+        path:'**',
         component:NotFoundPageComponent
     }
 ];

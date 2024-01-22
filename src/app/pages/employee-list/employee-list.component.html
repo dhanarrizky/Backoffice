@@ -1,1 +1,46 @@
-<p class="container">employee-list works!</p>
+<div class="container">
+    <div class="data-table">
+        <h1>Data Emplotyees</h1>
+        <div class="btn-add-div">
+            <div class="add-employee">
+                <a routerLink="/add-employees"><p>+</p> Add New Employees</a>
+            </div>
+        </div>
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTriger">
+            <thead>
+                <tr>
+                    <th>No</th> 
+                    <th>username</th> 
+                    <th>firstName</th> 
+                    <th>lastName</th> 
+                    <th>email</th>
+                    <th>birthDate</th>
+                    <th>basicSalary</th>
+                    <th>status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of jsonData">
+                    <td>{{ jsonData.indexOf(item) +1 }}</td> 
+                    <td>{{ item.username }}</td> 
+                    <td>{{ item.firstName }}</td> 
+                    <td>{{ item.lastName }}</td> 
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.birtdDate }}</td>
+                    <td>{{ item.basicSalary }}</td>
+                    <td>
+                        <p *ngIf="item.status">Active</p>
+                        <p *ngIf="!item.status">DeActive</p>
+                    </td>
+                    <td>
+                        <div class="action-group">
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
