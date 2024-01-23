@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="form-add-employee">
+        <div class="header">
+            <h1>Add New Employees</h1>
+        </div>
+        <form action="#" [formGroup]="addEmployeeForm" (submit)="onSubmit()">
+            <div>
+                <label for="username">username</label>
+                <input type="text" name="username" formControlName="username"> 
+            </div>
+            <div class="valid-form" *ngIf="addEmployeeForm.get('username')?.invalid && addEmployeeForm.get('username')?.touched">
+                *{{ addEmployeeForm.get('username')?.errors }}
+            </div>
+            <div>
+                <label for="firstName">firstName</label>
+                <input type="text" name="firstName" formControlName="firstName" >
+            </div>
+            <div class="valid-form" *ngIf="addEmployeeForm.get('firstName')?.invalid && addEmployeeForm.get('firstName')?.touched">
+                *{{ addEmployeeForm.get('firstName')?.errors }}
+            </div>
+            <div>
+                <label for="lastName">lastName</label>
+                <input type="text" name="lastName" formControlName="lastName" >
+            </div>
+            <div class="valid-form" *ngIf="addEmployeeForm.get('lastName')?.invalid && addEmployeeForm.get('lastName')?.touched">
+                *{{ addEmployeeForm.get('lastName')?.errors }}
+            </div>
+            <div>
+                <label for="email">email</label>
+                <input type="email" name="email" formControlName="email" >
+            </div>
+            <div class="valid-form" *ngIf="addEmployeeForm.get('email')?.invalid && addEmployeeForm.get('email')?.touched">
+                *{{ addEmployeeForm.get('email')?.errors }}
+            </div>
+            <div>
+                <label for="birthDate">birthDate</label>
+                <input type="date" name="birthDate" formControlName="birthDate" >
+            </div>
+            <div class="valid-form" *ngIf="addEmployeeForm.get('birthDate')?.invalid && addEmployeeForm.get('birthDate')?.touched">
+                *{{ addEmployeeForm.get('birthDate')?.errors }}
+            </div>
+            <div>
+                <label for="basicSalary">basicSalary</label>
+                Rp. <input type="number" name="basicSalary" formControlName="basicSalary" >
+            </div>
+            <div class="valid-form" *ngIf="addEmployeeForm.get('basicSalary')?.invalid && addEmployeeForm.get('basicSalary')?.touched">
+                *{{ addEmployeeForm.get('basicSalary')?.errors }}
+            </div>
+            <div>
+                <label for="status">status</label>
+                <!-- <input type="text" name="status" formControlName="status" > -->
+                <select name="status" formControlName="status"  id="status">
+                    <option value="1">Active</option>
+                    <option value="0">DeActive</option>
+                </select>
+            </div>
+            <div class="valid-form" *ngIf="addEmployeeForm.get('status')?.invalid && addEmployeeForm.get('status')?.touched">
+                *{{ addEmployeeForm.get('status')?.errors }}
+            </div>
+            <div>
+                <label for="group">group</label>
+                <input type="text" name="group" formControlName="group" >
+            </div>
+            <div class="valid-form" *ngIf="addEmployeeForm.get('group')?.invalid && addEmployeeForm.get('group')?.touched">
+                *{{ addEmployeeForm.get('group')?.errors }}
+            </div>
+            <div>
+                <label for="description">description</label>
+                <textarea name="description" formControlName="description"  id="description" cols="30" rows="10">
+                </textarea>
+            </div>
+            <div class="valid-form" *ngIf="addEmployeeForm.get('description')?.invalid && addEmployeeForm.get('description')?.touched">
+                *{{ addEmployeeForm.get('description')?.errors }}
+            </div>
+            <div class="button-group">
+                <button class="btn btn-secandary" routerLink="/">Cancel</button>
+                <button class="btn btn-success" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
