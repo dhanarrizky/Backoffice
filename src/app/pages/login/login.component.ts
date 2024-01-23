@@ -19,21 +19,22 @@ export class LoginComponent{
   })
 
 
-  constructor(private service:AccountService, private router:Router, private formBuilder:FormBuilder){}
+  constructor(private service:AccountService, private router:Router, private formBuilder:FormBuilder){
+    console.log('current url : ', this.router.url)
+  }
   err:string | null = null;
   clsDanger:string | null = null;
   currentUrl:string = '';
 
 
   onSubmit():void {
+    // this.currentUrl = ;
+    
+    
     console.log('login form : ', this.loginForm.value);
     if(this.loginForm.value !== null || this.loginForm.value !== ''){
       this.checkLogin(this.loginForm.value)
     }
-
-    
-    this.currentUrl = this.router.url;
-    console.log('current url : ', this.currentUrl)
   }
 
 

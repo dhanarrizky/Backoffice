@@ -3,7 +3,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { ConsumeJsonService } from '../../../services/consume-employee-json/consume-json.service';
 import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { ShareDataService } from '../../../services/share-data-service/share-data.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -19,7 +20,7 @@ export class EmployeeListComponent implements OnInit {
   dtOptions:DataTables.Settings = {}
   dtTriger:Subject<any> = new Subject<any>();
 
-  constructor(private jsonService: ConsumeJsonService){}
+  constructor(private jsonService: ConsumeJsonService, private sendObjctService:ShareDataService,){}
 
   ngOnInit(): void {
     this.dtOptions={
@@ -34,6 +35,14 @@ export class EmployeeListComponent implements OnInit {
       this.dtTriger.next(null);
       console.log("Data Json : ", this.jsonData)
     })
+  }
+
+  sendEmployeeObjectToEdit(employee:any){
+    this.sendObjctService.sendEmployeeObject(employee,'/employee/update-employee');
+  }
+
+  sendEmployeeObjectToDetail(employee:any){
+    this.sendObjctService.sendEmployeeObject(employee,'/employee/detail');
   }
 
 }

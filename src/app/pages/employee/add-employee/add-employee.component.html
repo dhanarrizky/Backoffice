@@ -1,7 +1,12 @@
 <div class="container">
     <div class="form-add-employee">
         <div class="header">
-            <h1>Add New Employees</h1>
+            <div *ngIf="!updateEmployee">
+                <h1>Add New Employees</h1>
+            </div>
+            <div *ngIf="updateEmployee">
+                <h1>Update Employees Data</h1>
+            </div>
         </div>
         <form action="#" [formGroup]="addEmployeeForm" (submit)="onSubmit()">
             <div>

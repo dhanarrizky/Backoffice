@@ -35,7 +35,8 @@
                     </td>
                     <td>
                         <div class="action-group">
-                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-info" (click)="sendEmployeeObjectToDetail(item)">Detail</button>
+                            <button class="btn btn-warning" (click)="sendEmployeeObjectToEdit(item)">Edit</button>
                             <button class="btn btn-danger">Delete</button>
                         </div>
                     </td>

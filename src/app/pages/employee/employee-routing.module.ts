@@ -16,13 +16,18 @@ export const routes: Routes = [
                 component:EmployeeListComponent
             },
             {
-                path:'detail/:username',
+                path:'detail',
                 title:'employee Detail',
                 component:EmployeeDetailComponent
             },
             {
                 path:'add-employee',
                 title:'add new employee',
+                component:AddEmployeeComponent
+            },
+            {
+                path:'update-employee',
+                title:'uipdate employee data',
                 component:AddEmployeeComponent
             },
             {
