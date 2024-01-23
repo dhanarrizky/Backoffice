@@ -11,15 +11,15 @@ import { ShareDataService } from '../../../services/share-data-service/share-dat
 })
 
 export class EmployeeDetailComponent implements OnInit{
-  username:string = '';
-  firstName:string = '';
-  lastName:string = '';
-  email:string = '';
-  birthDate:string = '';
-  basicSalary:string = '';
-  status:string = '';
-  group:string = '';
-  description:string = '';
+  username:string = 'username';
+  firstName:string = 'username';
+  lastName:string = 'username';
+  email:string = 'username';
+  birthDate:string = 'username';
+  basicSalary:string = 'username';
+  status:string = 'username';
+  group:string = 'username';
+  description:string = 'username';
 
   constructor(private shareService:ShareDataService){}
 

@@ -37,8 +37,9 @@
               loginForm.controls['password'].touched && loginForm.controls['password'].valid,
             'danger-wrong': loginForm.controls['password'].touched && !loginForm.controls['password'].valid
           }"
+          (keyup.enter)="onSubmit()"
       />
     </div>
-    <button (click)="onSubmit()">Submit</button>
+    <button (click)="onSubmit()" >Submit</button>
   </div>
 </div>

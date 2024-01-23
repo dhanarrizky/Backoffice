@@ -1,0 +1,82 @@
+.card-detail {
+    // background-color: aqua;
+    .detail-head {
+        background-color: #5a43a0;
+        height: 80px;
+        margin: 20px 0px;
+        color: white;
+        padding: 20px;
+
+        h3 {
+            font-size: 30px;
+        }
+    }
+
+    .detail-body {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 20px;
+
+        .row-one {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            .col {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                width: 100%;
+
+                div {
+                    display: flex;
+                    gap: 20px;
+                    justify-content: space-between;
+                    
+                    input {
+                        width: 80%;
+                        background-color: #f6f3ff;
+                        border: none;
+                    }
+                    input::placeholder {
+                        font-size: 20px;
+                        color: black;
+                    }
+                }
+            }
+        }
+        
+        .row {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            div {
+                display: flex;
+                gap: 20px;
+                justify-content: space-between;
+                
+                input {
+                    border: none;
+                    background-color: #f6f3ff;
+                    width: 90%;
+                }
+                input::placeholder {
+                    font-size: 20px;
+                    color: black;
+                }
+            }
+        }
+
+        button {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #5a43a0;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    }
+}
