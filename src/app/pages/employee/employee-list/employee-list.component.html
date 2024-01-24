@@ -35,9 +35,9 @@
                     </td>
                     <td>
                         <div class="action-group">
-                            <button class="btn btn-info" (click)="sendEmployeeObjectToDetail(item)">Detail</button>
-                            <button class="btn btn-warning" (click)="sendEmployeeObjectToEdit(item)">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-info" (click)="goToDetail(item)">Detail</button>
+                            <button class="btn btn-warning" (click)="showModalEdit(item)">Edit</button>
+                            <button class="btn btn-danger" (click)="showModalDelete(item)">Delete</button>
                         </div>
                     </td>
                 </tr>
@@ -48,18 +48,20 @@
 
 
 
-<div class="modal-confirm">
+<div class="modal-confirm" [ngClass]="{'open':modalShow,'':!modalShow}">
     <div class="modal-card">
-        <div class="head-card">
-            this is for confirmation
+        <div class="head-card" [ngClass]="{'danger-delete':deleteConfirm,'warning-edit':!deleteConfirm}">
+            {{ confirmHead }} confirmation
         </div>
         <div class="body-card">
             <div class="confirmation-message">
-                Are You Sure Want to delete This one
+                {{ confirmMessage }}
             </div>
             <div class="button-group">
-                <button>No</button>
-                <button>Yes</button>
+                <button (click)="closeModal()">No</button>
+                <button (click)="!deleteConfirm ? sendEmployeeObject(employeeObj, modalNavigate) : deleteOk(employeeObj.username)"
+                [ngClass]="{'danger-delete':deleteConfirm,'warning-edit':!deleteConfirm}"
+                >Yes</button>
             </div>
         </div>
     </div>

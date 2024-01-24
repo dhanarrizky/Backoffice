@@ -1,4 +1,6 @@
+// @import "~@ng-select/ng-select/themes/default.theme.css";
 .form-add-employee {
+    margin-bottom: 100px;
     .header {
         background-color: #5a43a0;
         color: white;
@@ -28,6 +30,12 @@
                 height: 30px;
             }
 
+            label {
+                span {
+                    color: red;
+                }
+            }
+
             // input {
             //     width: 85%;
             //     height: 30px;
@@ -35,6 +43,8 @@
 
             textarea {
                 height: 100px;
+                padding-top: 10px;
+                padding-bottom: 10px;
             }
         }
 

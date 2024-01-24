@@ -1,31 +1,51 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ShareDataService } from '../../../services/share-data-service/share-data.service';
 
 @Component({
   selector: 'app-add-employee',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule, CommonModule],
+  imports: [RouterModule, ReactiveFormsModule, 
+    CommonModule, FormsModule],
   templateUrl: './add-employee.component.html',
   styleUrl: './add-employee.component.scss'
 })
+
 export class AddEmployeeComponent {
   addEmployeeForm = this.formBuilder.group({
     username: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    birthDate: ['', Validators.required],
-    basicSalary: ['', Validators.required],
+    birthDate: [null as Date | null , Validators.required],
+    basicSalary: ['', [Validators.required, Validators.minLength(1000000)]],
     status: ['', Validators.required],
     group: ['', Validators.required],
-    description: ['', Validators.required],
+    description: [''],
   })
 
   updateEmployee:boolean = false;
   routeResult:string[] = [];
+
+  statusItem = ['Active','DeActive']
+
+  groupItem = [
+    'Frontend ',
+    'Development',
+    'UI/UX',
+    'Backend',
+    'Mobile App Development',
+    'Data Science',
+    'DevOps',
+    'Cloud Computing',
+    'Cybersecurity',
+    'Machine Learning',
+    'Full Stack Development',]
+  
+  selectedItem: string = '';
+  
 
   constructor(private formBuilder:FormBuilder, private router:Router, 
     private shareDataService:ShareDataService) {
@@ -45,18 +65,19 @@ export class AddEmployeeComponent {
 
   parseEmployeePath(path: string): string[] {
     const pathParts = path.replace(/^\/|\/$/g, '').split('/');
-  
     return pathParts;
   }
 
   updateEmployeeObject(employee:any){
+    const birthDateValue: Date = new Date(employee.birthDate);
+
     console.log('update Employee => share data : ', employee)
     this.addEmployeeForm.setValue({
       username: employee.username,
       firstName: employee.firstName,
       lastName: employee.lastName,
       email: employee.email,
-      birthDate: employee.birthDate,
+      birthDate: birthDateValue,
       basicSalary: employee.basicSalary,
       status: employee.status,
       group: employee.group,

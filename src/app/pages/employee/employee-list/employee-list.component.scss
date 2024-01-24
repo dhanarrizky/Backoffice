@@ -103,9 +103,17 @@
         font-size: 18px;
         font-weight: bold;
         margin-bottom: 10px;
-        background-color: #5a43a0;
-        color: white;
         padding: 20px;
+      }
+      
+      .danger-delete {
+        background-color: red;
+        color: white;
+      }
+      
+      .warning-edit {
+        background-color: yellow;
+        color: black;
       }
   
       .body-card {
@@ -121,11 +129,12 @@
   
             &:first-child {
               background-color: #ccc;
+              border: none;
             }
   
             &:last-child {
-              background-color: #f44336;
-              color: #fff;
+              // background-color: #f44336;
+              border: none;
             }
           }
         }

@@ -10,73 +10,87 @@
         </div>
         <form action="#" [formGroup]="addEmployeeForm" (submit)="onSubmit()">
             <div>
-                <label for="username">username</label>
+                <label for="username">username<span>*</span></label>
                 <input type="text" name="username" formControlName="username"> 
             </div>
-            <div class="valid-form" *ngIf="addEmployeeForm.get('username')?.invalid && addEmployeeForm.get('username')?.touched">
-                *{{ addEmployeeForm.get('username')?.errors }}
+            <div class="valid-form" *ngIf="addEmployeeForm.controls['username'].invalid && addEmployeeForm.controls['username'].touched">
+                *username is required
             </div>
             <div>
-                <label for="firstName">firstName</label>
+                <label for="firstName">firstName<span>*</span></label>
                 <input type="text" name="firstName" formControlName="firstName" >
             </div>
-            <div class="valid-form" *ngIf="addEmployeeForm.get('firstName')?.invalid && addEmployeeForm.get('firstName')?.touched">
-                *{{ addEmployeeForm.get('firstName')?.errors }}
+            <div class="valid-form" *ngIf="addEmployeeForm.controls['firstName'].invalid && addEmployeeForm.controls['firstName'].touched">
+                *firstName is required
             </div>
             <div>
                 <label for="lastName">lastName</label>
                 <input type="text" name="lastName" formControlName="lastName" >
             </div>
-            <div class="valid-form" *ngIf="addEmployeeForm.get('lastName')?.invalid && addEmployeeForm.get('lastName')?.touched">
-                *{{ addEmployeeForm.get('lastName')?.errors }}
-            </div>
+            <!-- <div class="valid-form" *ngIf="addEmployeeForm.controls['lastName'].invalid && addEmployeeForm.controls['lastName'].touched">
+                *lastName is required
+            </div> -->
             <div>
-                <label for="email">email</label>
+                <label for="email">email<span>*</span></label>
                 <input type="email" name="email" formControlName="email" >
             </div>
-            <div class="valid-form" *ngIf="addEmployeeForm.get('email')?.invalid && addEmployeeForm.get('email')?.touched">
-                *{{ addEmployeeForm.get('email')?.errors }}
+            <div class="valid-form" *ngIf="addEmployeeForm.controls['email'].invalid && addEmployeeForm.controls['email'].touched">
+                <div *ngIf="addEmployeeForm.controls['email'].hasError('required')">
+                    *email is required
+                </div>
+                <div *ngIf="addEmployeeForm.controls['email'].hasError('email')">
+                    *you must enter the email
+                </div>
             </div>
             <div>
-                <label for="birthDate">birthDate</label>
+                <label for="birthDate">birthDate<span>*</span></label>
                 <input type="date" name="birthDate" formControlName="birthDate" >
             </div>
-            <div class="valid-form" *ngIf="addEmployeeForm.get('birthDate')?.invalid && addEmployeeForm.get('birthDate')?.touched">
-                *{{ addEmployeeForm.get('birthDate')?.errors }}
+            <div class="valid-form" *ngIf="addEmployeeForm.controls['birthDate'].invalid && addEmployeeForm.controls['birthDate'].touched">
+                *birthDate is required
             </div>
             <div>
-                <label for="basicSalary">basicSalary</label>
+                <label for="basicSalary">basicSalary<span>*</span></label>
                 Rp. <input type="number" name="basicSalary" formControlName="basicSalary" >
             </div>
-            <div class="valid-form" *ngIf="addEmployeeForm.get('basicSalary')?.invalid && addEmployeeForm.get('basicSalary')?.touched">
-                *{{ addEmployeeForm.get('basicSalary')?.errors }}
+            <div class="valid-form" *ngIf="addEmployeeForm.controls['basicSalary'].invalid && addEmployeeForm.controls['basicSalary'].touched">
+                <div *ngIf="addEmployeeForm.controls['basicSalary'].hasError('required')">
+                    *basicSalary is required
+                </div>
+                <div *ngIf="addEmployeeForm.controls['basicSalary'].hasError('minLength')">
+                    *The minimum amount entered is Rp. 1,000,000.00
+                </div>
             </div>
             <div>
-                <label for="status">status</label>
+                <label for="status">status<span>*</span></label>
                 <!-- <input type="text" name="status" formControlName="status" > -->
                 <select name="status" formControlName="status"  id="status">
-                    <option value="1">Active</option>
-                    <option value="0">DeActive</option>
+                    <option selected value="item">-- Selected --</option>
+                    <option *ngFor="let item of groupItem" value="item">{{ item }}</option>
                 </select>
             </div>
-            <div class="valid-form" *ngIf="addEmployeeForm.get('status')?.invalid && addEmployeeForm.get('status')?.touched">
-                *{{ addEmployeeForm.get('status')?.errors }}
+            <div class="valid-form" *ngIf="addEmployeeForm.controls['status'].invalid && addEmployeeForm.controls['status'].touched">
+                *status is required
             </div>
             <div>
-                <label for="group">group</label>
-                <input type="text" name="group" formControlName="group" >
+                <label for="group">group<span>*</span></label>
+                <select name="group" formControlName="group"  id="group">
+                    <option selected value="item">-- Selected --</option>
+                    <option *ngFor="let item of statusItem" value="item">{{ item }}</option>
+                </select>
+                <!-- <input type="text" name="group" formControlName="group" > -->
             </div>
-            <div class="valid-form" *ngIf="addEmployeeForm.get('group')?.invalid && addEmployeeForm.get('group')?.touched">
-                *{{ addEmployeeForm.get('group')?.errors }}
+            <div class="valid-form" *ngIf="addEmployeeForm.controls['group'].invalid && addEmployeeForm.controls['group'].touched">
+                *group is required
             </div>
             <div>
                 <label for="description">description</label>
                 <textarea name="description" formControlName="description"  id="description" cols="30" rows="10">
                 </textarea>
             </div>
-            <div class="valid-form" *ngIf="addEmployeeForm.get('description')?.invalid && addEmployeeForm.get('description')?.touched">
-                *{{ addEmployeeForm.get('description')?.errors }}
-            </div>
+            <!-- <div class="valid-form" *ngIf="addEmployeeForm.controls['description'].invalid && addEmployeeForm.controls['description'].touched">
+                *description is required
+            </div> -->
             <div class="button-group">
                 <button class="btn btn-secandary" routerLink="/">Cancel</button>
                 <button class="btn btn-success" type="submit">Submit</button>

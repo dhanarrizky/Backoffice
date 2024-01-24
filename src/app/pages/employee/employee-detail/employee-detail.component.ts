@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ShareDataService } from '../../../services/share-data-service/share-data.service';
+import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-employee-detail',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
+  providers:[CurrencyPipe, DatePipe],
   templateUrl: './employee-detail.component.html',
   styleUrl: './employee-detail.component.scss'
 })
@@ -32,7 +34,12 @@ export class EmployeeDetailComponent implements OnInit{
     this.email = employee.email;
     this.birthDate = employee.birthDate;
     this.basicSalary = employee.basicSalary;
-    this.status = employee.status;
+
+    if(employee.status === 1){
+      this.status = 'Activate';
+    } else {
+      this.status = 'DeActivate';
+    }
     this.group = employee.group;
     this.description = employee.description;
   }

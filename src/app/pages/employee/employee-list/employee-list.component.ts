@@ -20,6 +20,13 @@ export class EmployeeListComponent implements OnInit {
   dtOptions:DataTables.Settings = {}
   dtTriger:Subject<any> = new Subject<any>();
 
+  modalShow:boolean =  false;
+  deleteConfirm:boolean = false;
+  modalNavigate:string = '';
+  employeeObj:any;
+  confirmHead:string = '';
+  confirmMessage:string = '';
+
   constructor(private jsonService: ConsumeJsonService, private sendObjctService:ShareDataService,){}
 
   ngOnInit(): void {
@@ -48,41 +55,43 @@ export class EmployeeListComponent implements OnInit {
     })
   }
 
-  sendEmployeeObjectToEdit(employee:any){
-    this.sendObjctService.sendEmployeeObject(employee,'/employee/update-employee');
+  sendEmployeeObject(employee:any , navigate:string){
+      this.sendObjctService.sendEmployeeObject(employee,navigate);
   }
 
-  sendEmployeeObjectToDetail(employee:any){
-    this.sendObjctService.sendEmployeeObject(employee,'/employee/detail');
+  // paginate_button current(pagination)
+  // class="DataTables_Table_0_filter" input(search)
+  // class="dataTables_length" select(search)
+
+  goToDetail(employee:any){
+    this.sendEmployeeObject(employee, '/employee/detail')
+  }
+  
+  showModalEdit(employee:any){
+    this.modalShow = true
+    this.deleteConfirm = false
+    this.modalNavigate = '/employee/update-employee'
+    this.employeeObj = employee
+    this.confirmHead = 'Edit'
+    this.confirmMessage = "are you sure you want to edit "+ employee.username
+  }
+  
+  showModalDelete(employee:any){
+    this.modalShow = true
+    this.deleteConfirm = true
+    // this.modalNavigate = '/employee/detail'
+    this.employeeObj = employee
+    this.confirmHead = 'Delete'
+    this.confirmMessage = "are you sure you want to delete "+ employee.username
+  }
+  
+  deleteOk(username:string){
+    console.log("data "+ username +"has been deleted")
+    this.closeModal();
+  }
+  
+  closeModal(){
+    this.modalShow = false;
   }
 
 }
-
-
-// Gunakan mixin dalam komponen Angular:
-// typescript
-// Copy code
-// // your-component.component.ts
-
-// // Import the required Angular modules and services
-
-// @Component({
-//   // Component metadata
-//   styleUrls: ['./your-component.styles.scss']
-// })
-// export class YourComponent implements OnInit {
-//   // Your component properties and methods
-
-//   ngOnInit(): void {
-//     // Call the mixin when needed
-//     this.showModal();
-//   }
-
-//   showModal(): void {
-//     @include modal-open;
-//   }
-
-//   hideModal(): void {
-//     @include modal-close;
-//   }
-// }

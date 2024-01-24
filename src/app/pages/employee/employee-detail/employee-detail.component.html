@@ -8,44 +8,44 @@
             <div class="row-one">
                 <div class="col">
                     <div>
-                        <label for="username">username</label>
+                        <label for="username">Username</label>
                         : <input type="text" name="username" placeholder="{{ username }}" disabled>
                     </div>
                     <div>
-                        <label for="firstName">firstName</label>
+                        <label for="firstName">FirstName</label>
                         : <input type="text" name="firstName" placeholder="{{ firstName }}" disabled>
                     </div>
                     <div>
-                        <label for="lastName">lastName</label>
+                        <label for="lastName">LastName</label>
                         : <input type="text" name="lastName" placeholder="{{ lastName }}" disabled>
                     </div>
                 </div>
                 <div class="col">
                     <div>
-                        <label for="email">email</label>
+                        <label for="email">Email</label>
                         : <input type="text" name="email" placeholder="{{ email }}" disabled>
                     </div>
                     <div>
-                        <label for="birthDate">birthDate</label>
-                        : <input type="text" name="birthDate" placeholder="{{ birthDate }}" disabled>
+                        <label for="birthDate">Birth Date</label>
+                        : <input type="text" name="birthDate" placeholder="{{ birthDate | date:'medium' }}" disabled>
                     </div>
                     <div>
-                        <label for="basicSalary">basicSalary</label>
-                        : <input type="text" name="basicSalary" placeholder="{{ basicSalary }}" disabled>
+                        <label for="basicSalary">Basic Salary</label>
+                        : <input type="text" name="basicSalary" placeholder="{{ basicSalary | currency:'Rp. ' }}" disabled>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div>
-                    <label for="status">status</label>
+                    <label for="status">Status</label>
                     : <input type="text" name="status" placeholder="{{ status }}" disabled>
                 </div>
                 <div>
-                    <label for="group">group</label>
+                    <label for="group">Group</label>
                     : <input type="text" name="group" placeholder="{{ group }}" disabled>
                 </div>
                 <div>
-                    <label for="description">description</label>
+                    <label for="description">Description</label>
                     : <input type="text" name="description" placeholder="{{ description }}" disabled>
                 </div>
                 <div class="button-group">
