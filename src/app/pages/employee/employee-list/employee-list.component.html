@@ -27,7 +27,7 @@
                     <td>{{ item.firstName }}</td> 
                     <td>{{ item.lastName }}</td> 
                     <td>{{ item.email }}</td>
-                    <td>{{ item.birtdDate }}</td>
+                    <td>{{ item.birthDate }}</td>
                     <td>{{ item.basicSalary }}</td>
                     <td>
                         <p *ngIf="item.status">Active</p>
@@ -43,5 +43,24 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+
+
+<div class="modal-confirm">
+    <div class="modal-card">
+        <div class="head-card">
+            this is for confirmation
+        </div>
+        <div class="body-card">
+            <div class="confirmation-message">
+                Are You Sure Want to delete This one
+            </div>
+            <div class="button-group">
+                <button>No</button>
+                <button>Yes</button>
+            </div>
+        </div>
     </div>
 </div>

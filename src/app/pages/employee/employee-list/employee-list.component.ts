@@ -25,6 +25,17 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit(): void {
     this.dtOptions={
       pagingType:'full_numbers',
+      columns: [
+        { orderable: true, searchable: false }, // No
+        { orderable: true, searchable: true }, // username   
+        { orderable: true, searchable: true }, // fisrtname
+        { orderable: true, searchable: true }, // lastname
+        { orderable: true, searchable: true }, // email
+        { orderable: true, searchable: false }, // birthdate
+        { orderable: true, searchable: true }, // basicSallery
+        { orderable: true, searchable: true }, // status
+        {orderable: false, searchable:false} // action
+      ]
     }
     this.getData()
   }
@@ -46,3 +57,32 @@ export class EmployeeListComponent implements OnInit {
   }
 
 }
+
+
+// Gunakan mixin dalam komponen Angular:
+// typescript
+// Copy code
+// // your-component.component.ts
+
+// // Import the required Angular modules and services
+
+// @Component({
+//   // Component metadata
+//   styleUrls: ['./your-component.styles.scss']
+// })
+// export class YourComponent implements OnInit {
+//   // Your component properties and methods
+
+//   ngOnInit(): void {
+//     // Call the mixin when needed
+//     this.showModal();
+//   }
+
+//   showModal(): void {
+//     @include modal-open;
+//   }
+
+//   hideModal(): void {
+//     @include modal-close;
+//   }
+// }
